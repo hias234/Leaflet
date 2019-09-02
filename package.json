@@ -1,5 +1,5 @@
 {
-  "name": "leaflet",
+  "name": "sol-leaflet",
   "version": "1.5.1",
   "description": "JavaScript library for mobile-friendly interactive maps",
   "devDependencies": {
