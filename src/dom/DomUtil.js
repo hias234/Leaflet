@@ -212,11 +212,13 @@ export function testProp(props) {
 // browser doesn't support 3D CSS transforms.
 export function setTransform(el, offset, scale) {
 	var pos = offset || new Point(0, 0);
+	var x = Math.round(pos.x);
+	var y = Math.round(pos.y);
 
 	el.style[TRANSFORM] =
 		(Browser.ie3d ?
-			'translate(' + pos.x + 'px,' + pos.y + 'px)' :
-			'translate3d(' + pos.x + 'px,' + pos.y + 'px,0)') +
+			'translate(' + x + 'px,' + y + 'px)' :
+			'translate3d(' + x + 'px,' + y + 'px,0)') +
 		(scale ? ' scale(' + scale + ')' : '');
 }
 
