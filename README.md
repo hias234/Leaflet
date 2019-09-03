@@ -1,3 +1,10 @@
+# EasyArena Leaflet
+This is a fork of leaflet which only changes small parts to the requirements of the easy arena ticketing software.
+
+#### Differences to original library
+* Coordinates in DomUtil.setTransform are being rounded to the nearest integer using Math.round()
+
+# Original Documentation
 <img width="600" src="https://rawgit.com/Leaflet/Leaflet/master/src/images/logo.svg" alt="Leaflet" />
 
 Leaflet is the leading open-source JavaScript library for **mobile-friendly interactive maps**.
