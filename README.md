@@ -3,6 +3,7 @@ This is a fork of leaflet which only changes small parts to the requirements of 
 
 #### Differences to original library
 * Coordinates in DomUtil.setTransform are being rounded to the nearest integer using Math.round()
+* Do not round coordinates in Map.latLngToLayerPoint
 
 # Original Documentation
 <img width="600" src="https://rawgit.com/Leaflet/Leaflet/master/src/images/logo.svg" alt="Leaflet" />
