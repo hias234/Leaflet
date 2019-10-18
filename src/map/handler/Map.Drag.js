@@ -160,12 +160,33 @@ export var Drag = Handler.extend({
 		if (!this._viscosity || !this._offsetLimit) { return; }
 
 		var offset = this._draggable._newPos.subtract(this._draggable._startPos);
-
 		var limit = this._offsetLimit;
-		if (offset.x < limit.min.x) { offset.x = this._viscousLimit(offset.x, limit.min.x); }
-		if (offset.y < limit.min.y) { offset.y = this._viscousLimit(offset.y, limit.min.y); }
-		if (offset.x > limit.max.x) { offset.x = this._viscousLimit(offset.x, limit.max.x); }
-		if (offset.y > limit.max.y) { offset.y = this._viscousLimit(offset.y, limit.max.y); }
+
+		var b = latLngBounds(this._map.options.maxBounds);
+		var north = this._map.latLngToContainerPoint(b.getNorthWest()).y;
+		var south = this._map.latLngToContainerPoint(b.getSouthEast()).y;
+		var west = this._map.latLngToContainerPoint(b.getNorthWest()).x;
+		var east = this._map.latLngToContainerPoint(b.getSouthEast()).x;
+		if (this._viscosity === 1.0 && north > 0 && south < this._map.getSize().y) {
+			offset.y = 0;
+		} else {
+			if (offset.y < limit.min.y) {
+				offset.y = this._viscousLimit(offset.y, limit.min.y);
+			}
+			if (offset.y > limit.max.y) {
+				offset.y = this._viscousLimit(offset.y, limit.max.y);
+			}
+		}
+		if (this._viscosity === 1.0 && west > 0 && east < this._map.getSize().x) {
+			offset.x = 0;
+		} else {
+			if (offset.x < limit.min.x) {
+				offset.x = this._viscousLimit(offset.x, limit.min.x);
+			}
+			if (offset.x > limit.max.x) {
+				offset.x = this._viscousLimit(offset.x, limit.max.x);
+			}
+		}
 
 		this._draggable._newPos = this._draggable._startPos.add(offset);
 	},
