@@ -1,6 +1,6 @@
 {
   "name": "easy-arena-leaflet",
-  "version": "1.5.103",
+  "version": "1.5.104-alpha.7",
   "description": "JavaScript library for mobile-friendly interactive maps (based on Leaflet 1.5.1)",
   "devDependencies": {
     "eslint": "^4.19.1",
